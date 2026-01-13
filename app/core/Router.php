@@ -55,7 +55,20 @@ class Router
             return;
         }
 
-        
+        if (is_string($action)) {
+            [$controllerName, $method] = explode('@', $action);
+
+            $controllerClass = "App\\Controllers\\" . $controllerName;
+
+            if (class_exists($controllerClass)) {
+                $controller = new $controllerClass();
+
+                if (method_exists($controller, $method)) {
+                    call_user_func_array([$controller, $method], $params);
+                    return;
+                }
+            }
+        }
 
         echo "Error: Controller or Method not found!";
     }
