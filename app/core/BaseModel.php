@@ -44,7 +44,7 @@ class BaseModel {
         return $stmt->execute($data);
     }
 
-    public function update($table, $id, $data) {
+    public function update($table, $id, $data) { 
         $champs = "";
         foreach($data as $key => $value) {
             $champs .= "$key = :$key, ";
