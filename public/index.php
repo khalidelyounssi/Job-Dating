@@ -19,4 +19,6 @@ $router->get('/user/{id}', function($id) {
     echo "<h1>User ID: $id</h1>";
 });
 
+$router->get('/', 'HomeController@index');
+
 $router->dispatch();
